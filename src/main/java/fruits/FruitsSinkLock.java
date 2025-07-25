@@ -1,3 +1,5 @@
+package fruits;
+
 import interfaces.Sink;
 
 import java.util.HashMap;

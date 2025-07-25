@@ -1,3 +1,5 @@
+package bucket;
+
 import interfaces.Bucket;
 
 public class SimpleBucket<T> implements Bucket<T> {

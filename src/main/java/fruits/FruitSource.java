@@ -1,3 +1,5 @@
+package fruits;
+
 import interfaces.Source;
 
 import java.util.ArrayList;

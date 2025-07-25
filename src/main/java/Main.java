@@ -1,3 +1,6 @@
+import bucket.LockBucket;
+import fruits.FruitSource;
+import fruits.FruitsSinkSync;
 import interfaces.*;
 
 import java.util.ArrayList;
