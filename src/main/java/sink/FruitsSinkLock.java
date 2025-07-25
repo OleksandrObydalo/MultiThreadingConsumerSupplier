@@ -1,4 +1,4 @@
-package fruits;
+package sink;
 
 import interfaces.Sink;
 

@@ -1,6 +1,5 @@
 import bucket.LockBucket;
-import fruits.FruitSource;
-import fruits.FruitsSinkSync;
+import sink.*;
 import interfaces.*;
 
 import java.util.ArrayList;
@@ -9,9 +8,9 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Bucket<String> bucket = new LockBucket<>();
-        Sink<String> sink = new FruitsSinkSync(); // Assuming FruitsSink is one of the synchronized Sinks
+        Sink<String> sink = new FruitsSinkConcurrentCollection(); // Assuming FruitsSink is one of the synchronized Sinks
         List<Thread> suppliers = new ArrayList<>();
-        final int nSuppliers = 5;
+        final int nSuppliers = 1000;
         for (int i = 0; i < nSuppliers; i++) {
             suppliers.add(new Thread(
                     ISupplier.of(new FruitSource(), bucket),
@@ -22,7 +21,7 @@ public class Main {
         final int nConsumers = 3;
         for (int i = 0; i < nConsumers; i++) {
             consumers.add(new Thread(
-                    IConsumer.of(bucket, 5, sink),
+                    IConsumer.of(bucket, nSuppliers, sink),
                     "Consumer#%d".formatted((i + 1))
             ));
         }

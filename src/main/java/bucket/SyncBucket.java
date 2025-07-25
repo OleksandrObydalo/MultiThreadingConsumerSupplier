@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-class SyncBucket<T> implements Bucket<T> {
+public class SyncBucket<T> implements Bucket<T> {
     private T item;
     private volatile boolean isFull;
     private final Object LOCK = new Object();

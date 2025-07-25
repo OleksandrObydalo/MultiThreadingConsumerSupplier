@@ -1,12 +1,14 @@
-package fruits;
+package sink;
 
 import interfaces.Sink;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class FruitsSinkNoSync implements Sink<String> {
-    private Map<String, Integer> counter = new HashMap<>();
+public class FruitsSinkConcurrentCollection implements Sink<String> {
+    private Map<String, Integer> counter =
+            new ConcurrentHashMap<>();
 
     @Override
     public void add(String item) {
